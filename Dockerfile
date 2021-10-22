@@ -20,8 +20,6 @@ RUN curl -L \
   https://github.com/openvenues/libpostal/archive/$GIT_HASH.zip \
   > archive.zip
 RUN unzip archive.zip -d /src
-# RUN ls -l
-# RUN ls -l /libpostal-$GIT_HASH
 
 # build libpostal
 WORKDIR /src/libpostal-$GIT_HASH

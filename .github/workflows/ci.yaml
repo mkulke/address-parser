@@ -8,11 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
-    name: dummy
+    name: CI
     steps:
       - uses: actions/checkout@v2
-      - name: mgns
-        run: |
-          echo hello
-          echo world
-
+      - name: Build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
