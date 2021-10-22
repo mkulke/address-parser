@@ -4,18 +4,34 @@ Golang HTTP service wrapping [libpostal](https://github.com/openvenues/libpostal
 
 ## Prepare
 
-Tested with Go v1.17.
+Tested with Go v1.17 on Linux and MacOS.
 
 ```bash
 go mod tidy
 ```
 
+If libpostal is installed to a non-default path `PKG_CONFIG_PATH` and `LD_LIBRARY_PATH` need to be adjusted accordingly:
+
+```bash
+# LIBPOSTAL_HOME should point to the installation folder
+export PKG_CONFIG_PATH=$LIBPOSTAL_HOME/lib/pkgconfig
+export LD_LIBRARY_PATH=$LIBPOSTAL_HOME/lib
+```
+
 ## Build
+
+### Local
 
 ```bash
 go generate ./...
 # generates *.gen.go files in ./api
 go build
+```
+
+### Docker
+
+```bash
+docker build -t address-parser .
 ```
 
 ## Test
